@@ -22,7 +22,8 @@
 
 __all__ = ("compileUi", "compileUiDir", "widgetPluginPath")
 
-__version__ = "@pyside_tools_VERSION@"
+from . import _config
+__version__ = _config.version
 
 from pyside2uic.Compiler import indenter, compiler
 

@@ -10,7 +10,7 @@ set(pyside2_tools_MINOR_VERSION "0")
 set(pyside2_tools_MICRO_VERSION "0")
 set(pyside2_tools_VERSION "${pyside2_tools_MAJOR_VERSION}.${pyside2_tools_MINOR_VERSION}.${pyside2_tools_MICRO_VERSION}")
 
-configure_file("pyside2uic/__init__.py.in" "${CMAKE_CURRENT_BINARY_DIR}/pyside2uic/__init__.py" @ONLY)
+configure_file("pyside2uic/_config.py.in" "${CMAKE_CURRENT_BINARY_DIR}/pyside2uic/_config.py" @ONLY)
 
 option(BUILD_TESTS "Build tests." TRUE)
 
@@ -49,14 +49,12 @@ if (WIN32)
     install (FILES ${CMAKE_CURRENT_BINARY_DIR}/pyside2-uic.bat DESTINATION bin)
 endif ()
 
-install(FILES "${CMAKE_CURRENT_BINARY_DIR}/pyside2uic/__init__.py"
+install(FILES "${CMAKE_CURRENT_BINARY_DIR}/pyside2uic/_config.py"
         DESTINATION "${SITE_PACKAGE}/pyside2uic")
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/pyside2uic
         DESTINATION ${SITE_PACKAGE}
         PATTERN "*.in" EXCLUDE
-        PATTERN "*pyside2uic/*.1" EXCLUDE
-        PATTERN "*pyside2uic/__init__.py" EXCLUDE
-        PATTERN "*pyside2uic\\__init__.py" EXCLUDE)
+        PATTERN "*pyside2uic/*.1" EXCLUDE)
 
 # Man pages for pyside2-uic
 if (NOT WIN32)
